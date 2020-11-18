@@ -12,7 +12,7 @@ RUN echo "dash dash/sh boolean false" | debconf-set-selections && \
 
 # Keep the dependency list as short as reasonable
 RUN apt-get update && \
-    apt-get install -y android-tools-adb bc bison build-essential curl \
+    apt-get install -y sudo android-tools-adb bc bison build-essential curl \
         flex g++-multilib gcc-multilib git gnupg gperf \
         imagemagick libncurses5 lib32ncurses5-dev lib32readline-dev \
         lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev \
