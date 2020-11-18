@@ -1,7 +1,7 @@
 #
 # Minimum Docker image to build Android AOSP
 #
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 MAINTAINER Kyle Manna <kyle@kylemanna.com>
 
@@ -12,12 +12,13 @@ RUN echo "dash dash/sh boolean false" | debconf-set-selections && \
 
 # Keep the dependency list as short as reasonable
 RUN apt-get update && \
-    apt-get install -y bc bison bsdmainutils build-essential curl \
-        flex g++-multilib gcc-multilib git gnupg gperf lib32ncurses5-dev \
-        lib32z1-dev libesd0-dev libncurses5-dev \
-        libsdl1.2-dev libwxgtk3.0-dev libxml2-utils lzop sudo \
-        openjdk-8-jdk \
-        pngcrush schedtool xsltproc zip zlib1g-dev graphviz && \
+    apt-get install -y android-tools-adb bc bison build-essential curl \
+        flex g++-multilib gcc-multilib git gnupg gperf \
+        imagemagick libncurses5 lib32ncurses5-dev lib32readline-dev \
+        lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev \
+        libssl-dev libwxgtk3.0-gtk3-dev libxml2 libxml2-utils \
+        lzop openjdk-8-jdk pngcrush python rsync schedtool \
+        squashfs-tools xsltproc yasm zip zlib1g-dev && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD https://commondatastorage.googleapis.com/git-repo-downloads/repo /usr/local/bin/
