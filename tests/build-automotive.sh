@@ -19,7 +19,8 @@ if [ "$1" = "docker" ]; then
     # Use default sync '-j' value embedded in manifest file to be polite
     repo sync
 
-    prebuilts/misc/linux-x86/ccache/ccache -M 10G
+    # android 10 building don't need ccache!
+    # prebuilts/misc/linux-x86/ccache/ccache -M 10G
 
     source build/envsetup.sh
     lunch aosp_car_x86_64-userdebug
