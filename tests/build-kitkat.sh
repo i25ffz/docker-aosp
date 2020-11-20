@@ -24,17 +24,10 @@ if [ "$1" = "docker" ]; then
     source build/envsetup.sh
     lunch aosp_arm-eng
     make -j $cpus
-elif ["$1" = "emulator"]; then
-    prebuilts/misc/linux-x86/ccache/ccache -M 10G
-
-    source build/envsetup.sh
-    lunch aosp_arm-eng
-    make -j $cpus
     emulator
 else
     aosp_url="https://raw.githubusercontent.com/kylemanna/docker-aosp/master/utils/aosp"
     args="bash run.sh docker"
-    # args="bash run.sh emulator" # emulator after build
     # args="/bin/bash" # only bash
     export AOSP_EXTRA_ARGS="-v $(cd $(dirname $0) && pwd -P)/$(basename $0):/usr/local/bin/run.sh:ro"
     export AOSP_IMAGE="kylemanna/aosp:4.4-kitkat"
